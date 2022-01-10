@@ -1,0 +1,2 @@
+
+double convertToTick (double inch);
