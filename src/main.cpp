@@ -230,8 +230,8 @@ void usercontrol(void) {
     double speed = 1;
     enableDrivePID = false;
 
-    leftDrive.spin(directionType::fwd, (Controller1.Axis3.value() + Controller1.Axis4.value())/2, velocityUnits::pct); //(Axis3+Axis4)/2;
-    rightDrive.spin(directionType::fwd, (Controller1.Axis3.value() - Controller1.Axis4.value())/2, velocityUnits::pct);//(Axis3-Axis4)/2;
+    leftDrive.spin(directionType::fwd, (Controller1.Axis3.value() + (Controller1.Axis4.value())/2)/2, velocityUnits::pct); //(Axis3+Axis4)/2;
+    rightDrive.spin(directionType::fwd, (Controller1.Axis3.value() - (Controller1.Axis4.value())/2)/2, velocityUnits::pct);//(Axis3-Axis4)/2;
 
     //--------------------------------------------------------
     //-----------------TANK DRIVE-----------------------------

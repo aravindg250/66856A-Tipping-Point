@@ -10,12 +10,12 @@ void forkLift()
 {
   if(Controller1.ButtonL1.pressing())
   {
-    fork.setVelocity(50, velocityUnits::rpm);
+    fork.setVelocity(75, velocityUnits::rpm);
     fork.spin(fwd);
   }
   else if(Controller1.ButtonL2.pressing())
   {
-    fork.setVelocity(50, velocityUnits::rpm);
+    fork.setVelocity(75, velocityUnits::rpm);
     fork.spin(reverse);                                                                 
   }
   else
