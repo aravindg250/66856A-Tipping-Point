@@ -11,13 +11,14 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// fork                 motor         16              
-// lift                 motor_group   1, 2            
+// fork                 motor         10              
 // clamp                digital_out   A               
 // hook                 digital_out   B               
-// leftDrive            motor_group   19, 21          
-// rightDrive           motor_group   15, 14          
+// leftDrive            motor_group   13, 14          
+// rightDrive           motor_group   1, 2            
 // encode               digital_in    C               
+// intake               motor         9               
+// lift                 motor         7               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -63,7 +64,7 @@ int desiredTurnValue = 0;
 bool enableDrivePID = true;
 
 //Settings
-double kP = 0.08; // increase kp means to go faster, higher speed
+double kP = 0.12; // increase kp means to go faster, higher speed
 double kI = 0.00; // it give you extra push
 double kD = 0.7; //increase to slow down
 
@@ -171,13 +172,13 @@ void autonomous(void) {
   resetDriveSensors = true;
   //  desiredValue = int2deg(10);
   // desiredTurnValue = int2deg(30);
+  clamp.set(true);
 
-
-  desiredValue = int2deg(55);
+  desiredValue = int2deg(65);
 
   vex::task::sleep(1300);
-  clamp.set(true);
-  vex::task::sleep(400);
+  clamp.set(false);
+  vex::task::sleep(500);
   // lift.rotateFor(fwd, 1000, msec, 75, velocityUnits::rpm);
   // lift.stop(brakeType::hold);
 
@@ -186,7 +187,7 @@ void autonomous(void) {
   resetDriveSensors = true;
   // desiredTurnValue = 0;
 
-desiredValue = int2deg(-45);
+  desiredValue = int2deg(-45);
   // clamp.set(false);
   // resetDriveSensors = true;
   // desiredValue = int2deg(50);
@@ -227,18 +228,19 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-    double speed = 1;
+  
     enableDrivePID = false;
+    // leftDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) + (Controller1.Axis1.value()/2)), velocityUnits::pct); //(Axis3+Axis4)/2;
+    // rightDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) - (Controller1.Axis1.value()/2)), velocityUnits::pct);//(Axis3-Axis4)/2;
 
-    leftDrive.spin(directionType::fwd, (Controller1.Axis3.value() + (Controller1.Axis4.value())/2)/2, velocityUnits::pct); //(Axis3+Axis4)/2;
-    rightDrive.spin(directionType::fwd, (Controller1.Axis3.value() - (Controller1.Axis4.value())/2)/2, velocityUnits::pct);//(Axis3-Axis4)/2;
+   
 
     //--------------------------------------------------------
     //-----------------TANK DRIVE-----------------------------
-    // leftSide = Controller1.Axis3.value();
-    // rightSide = Controller1.Axis2.value();
-    // leftDrive.spin(fwd, leftSide/(1.75), percentUnits::pct);
-    // rightDrive.spin(fwd, rightSide/(1.75), percentUnits::pct);
+    leftSide = Controller1.Axis3.value();
+    rightSide = Controller1.Axis2.value();
+    leftDrive.spin(fwd, leftSide/(1.5), percentUnits::pct);
+    rightDrive.spin(fwd, rightSide/(1.5), percentUnits::pct);
     //--------------------------------------------------------
    
 
@@ -246,7 +248,7 @@ void usercontrol(void) {
     fourBar();
     barClamp();
     underClaw();
-    // intakes();
+    intakes();
 
 
     wait(20, msec); // Sleep the task for a short amount of time to

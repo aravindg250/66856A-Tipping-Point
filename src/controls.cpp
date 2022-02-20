@@ -10,13 +10,13 @@ void forkLift()
 {
   if(Controller1.ButtonL1.pressing())
   {
-    fork.setVelocity(75, velocityUnits::rpm);
-    fork.spin(fwd);
+    fork.setVelocity(150, velocityUnits::rpm);
+    fork.spin(reverse);
   }
   else if(Controller1.ButtonL2.pressing())
   {
-    fork.setVelocity(75, velocityUnits::rpm);
-    fork.spin(reverse);                                                                 
+    fork.setVelocity(150, velocityUnits::rpm);
+    fork.spin(fwd);                                                                 
   }
   else
   {
@@ -41,11 +41,11 @@ void fourBar()
 }
 void barClamp()
 {
-  if(Controller1.ButtonX.pressing())
+  if(Controller1.ButtonA.pressing())
   {
     clamp.set(true);
   }
-  else if(Controller1.ButtonA.pressing())
+  else if(Controller1.ButtonX.pressing())
   {
     clamp.set(false);
   }
@@ -62,19 +62,19 @@ void underClaw()
   }
 }
 
-// void intakes()
-// {
-//   if(Controller1.ButtonX.pressing())
-//   {
+void intakes()
+{
+  if(Controller1.ButtonY.pressing())
+  {
     
-//     intake.spin(directionType::rev, 70, velocityUnits::pct);
-//   }
-//   else if(Controller1.ButtonA.pressing())
-//   {
-//     intake.spin(directionType::fwd, 350, velocityUnits::pct);                                                                 
-//   }
-//   else
-//   {
-//     intake.stop(brakeType::hold);
-//   }
-// }
+    intake.spin(directionType::rev, 60, velocityUnits::pct);
+  }
+  else if(Controller1.ButtonB.pressing())
+  {
+    intake.spin(directionType::fwd, 350, velocityUnits::pct);                                                                 
+  }
+  else
+  {
+    intake.stop(brakeType::hold);
+  }
+}
