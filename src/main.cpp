@@ -43,7 +43,7 @@ competition Competition;
 /*                          Pre-Autonomous Functions                         */
 /*                                                                           */
 /*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following functionvdlvidhviejrnvierverioiiogergrgververvfrom this function   */
+/*  Do them in the following function from this function   */
 /*  or the autonomous and usercontrol tasks will not be started.  This       */
 /*  function is only called once after the V5 has been powered on and        */
 /*  not every time that the robot is disabled.                               */
@@ -247,7 +247,7 @@ void usercontrol(void) {
     forkLift();
     fourBar();
     barClamp();
-    underClaw();
+    frontClamp();
     intakes();
 
 

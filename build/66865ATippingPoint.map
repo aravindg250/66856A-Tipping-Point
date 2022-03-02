@@ -2639,9 +2639,9 @@ Linker script and memory map
  .text._Z8barClampv
                 0x03800788       0x58 build/src/controls.o
                 0x03800788                barClamp()
- .text._Z9underClawv
+ .text._Z10frontClampv
                 0x038007e0       0x58 build/src/controls.o
-                0x038007e0                underClaw()
+                0x038007e0                frontClamp()
  .text._Z7intakesv
                 0x03800838       0xa8 build/src/controls.o
                 0x03800838                intakes()
@@ -3414,7 +3414,7 @@ Linker script and memory map
  .ARM.exidx.text._Z8barClampv
                 0x03803484        0x0 build/src/controls.o
                                   0x8 (size before relaxing)
- .ARM.exidx.text._Z9underClawv
+ .ARM.exidx.text._Z10frontClampv
                 0x03803484        0x0 build/src/controls.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z7intakesv

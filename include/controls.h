@@ -1,5 +1,5 @@
 void forkLift();
 void fourBar();
 void barClamp();
-void underClaw();
+void frontClamp();
 void intakes();

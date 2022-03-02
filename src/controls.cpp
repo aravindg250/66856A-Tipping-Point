@@ -50,7 +50,7 @@ void barClamp()
     clamp.set(false);
   }
 }
-void underClaw()
+void frontClamp()
 {
   if(Controller1.ButtonUp.pressing())
   {
