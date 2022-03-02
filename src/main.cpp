@@ -247,7 +247,7 @@ void usercontrol(void) {
     forkLift();
     fourBar();
     barClamp();
-    frontClamp();
+    backClamp();
     intakes();
 
 
