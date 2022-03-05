@@ -11,7 +11,6 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// fork                 motor         10              
 // clamp                digital_out   A               
 // hook                 digital_out   B               
 // leftDrive            motor_group   13, 14          
@@ -64,9 +63,9 @@ int desiredTurnValue = 0;
 bool enableDrivePID = true;
 
 //Settings
-double kP = 0.12; // increase kp means to go faster, higher speed
+double kP = 0.3; // increase kp means to go faster, higher speed
 double kI = 0.00; // it give you extra push
-double kD = 0.7; //increase to slow down
+double kD = 0.3; //increase to slow down
 
 double turnkP = 0.01;
 double turnkI = 0.0001;
@@ -172,21 +171,21 @@ void autonomous(void) {
   resetDriveSensors = true;
   //  desiredValue = int2deg(10);
   // desiredTurnValue = int2deg(30);
-  clamp.set(true);
+  clamp.set(false);
 
   desiredValue = int2deg(65);
 
   vex::task::sleep(1300);
-  clamp.set(false);
+  clamp.set(true);
   vex::task::sleep(500);
   // lift.rotateFor(fwd, 1000, msec, 75, velocityUnits::rpm);
-  // lift.stop(brakeType::hold);
+ lift.stop(brakeType::hold);
 
   // vex::task::sleep(4000);
 
   resetDriveSensors = true;
   // desiredTurnValue = 0;
-
+ 
   desiredValue = int2deg(-45);
   // clamp.set(false);
   // resetDriveSensors = true;
@@ -230,10 +229,10 @@ void usercontrol(void) {
     // ........................................................................
   
     enableDrivePID = false;
-    // leftDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) + (Controller1.Axis1.value()/2)), velocityUnits::pct); //(Axis3+Axis4)/2;
-    // rightDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) - (Controller1.Axis1.value()/2)), velocityUnits::pct);//(Axis3-Axis4)/2;
+    // leftDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) + (Controller1.Axis4.value()/2)), velocityUnits::pct); //(Axis3+Axis4)/2;
+    // rightDrive.spin(directionType::fwd, ((Controller1.Axis3.value()/2) - (Controller1.Axis4.value()/2)), velocityUnits::pct);//(Axis3-Axis4)/2;
 
-   
+   intake.spin(directionType::fwd, 100, velocityUnits::pct);
 
     //--------------------------------------------------------
     //-----------------TANK DRIVE-----------------------------
@@ -244,7 +243,7 @@ void usercontrol(void) {
     //--------------------------------------------------------
    
 
-    forkLift();
+    // forkLift();
     fourBar();
     barClamp();
     backClamp();

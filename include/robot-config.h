@@ -4,7 +4,6 @@ extern brain Brain;
 
 // VEXcode devices
 extern controller Controller1;
-extern motor fork;
 extern digital_out clamp;
 extern digital_out hook;
 extern motor_group leftDrive;

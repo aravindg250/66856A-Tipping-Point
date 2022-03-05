@@ -9,7 +9,6 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor fork = motor(PORT10, ratio18_1, true);
 digital_out clamp = digital_out(Brain.ThreeWirePort.A);
 digital_out hook = digital_out(Brain.ThreeWirePort.B);
 motor leftDriveMotorA = motor(PORT13, ratio18_1, false);
